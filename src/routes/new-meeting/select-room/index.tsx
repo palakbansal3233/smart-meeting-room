@@ -13,7 +13,7 @@ const { useState } = React;
 const SelectRoom = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { building, startTime, endTime, date, title } = location.state as IRoomState;
+    const { building, startTime, endTime, date } = location.state as IRoomState;
     const { loading, data, error } = useQuery(GET_BUILDING_BY_ID, {
         variables: {
             id: Number(building)
@@ -32,7 +32,7 @@ const SelectRoom = () => {
     if (error) return <div>Something Went wrong please try later...</div>
 
     function selectAnotherBuilding() {
-        navigate('/new-meeting', { state: { building, startTime, endTime, date, title } });
+        navigate('/new-meeting', { state: { building, startTime, endTime, date } });
     }
 
     function getAvailableRoomsList() {
@@ -44,7 +44,7 @@ const SelectRoom = () => {
     }
 
     function submitMeeting() {
-        addNewMeeting({ variables: {id: Math.round(Math.random()*100), startTime, endTime, date, meetingRoomId: selectedMeetingRoomId, title}});
+        addNewMeeting({ variables: {id: Math.round(Math.random()*100), startTime, endTime, date, meetingRoomId: selectedMeetingRoomId}});
     }
 
     const availableRoomsInBuilding = getAvailableRoomsList();
@@ -55,7 +55,7 @@ const SelectRoom = () => {
                 <h1 className='title'>Please select one of the free rooms</h1>
                 <div className="update-info">
                     {mutationLoading && <div>Adding meeting to server...</div>}
-                    {mutationError && <div>Something went wrong while adding meeting. Please try later or referesh...</div>}
+                    {mutationError && <div>Something went wrong while adding meeting. Try later...</div>}
                     {mutationData && <div>Saved meeting redirecting to main page...</div>}
                 </div>
                 <div className="wrapper">

@@ -18,7 +18,7 @@
 }
 
 .meeting-room-container.selected {
-    background: #2c2e31;
+    background: lightgrey;
 }
 
 .button-wrapper {

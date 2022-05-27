@@ -20,6 +20,7 @@ export const mapServerDataToClientFormat = (buildings: IBuilding[]): IAppData =>
     const initialData: IAppData =  { buildings: [], meetingRooms: [], meetingsMeta: { todayMeetingCount: 0, onGoingMeetingCount: 0}};
     return buildings.reduce(({buildings, meetingRooms, meetingsMeta}: IAppData, building: IBuilding)=>{
         const { name, id, meetingRooms: buildingMeetingRooms} = building;
+        // eslint-disable-next-line array-callback-return
         buildingMeetingRooms?.map((meetingRoom) => {
           const { id, name, floor, meetings: roomMeetings} = meetingRoom
           let isAvailable = true;

@@ -11,7 +11,6 @@ const useAppState = () => {
     const [completed] = useState(false);
     const [appState, setAppState] = useState<IAppData>({ buildings: [], meetingRooms: [], meetingsMeta: { todayMeetingCount: 0, onGoingMeetingCount: 0 } })
     // Bug in pollling of useQuery hence using custom solution.
-    // https://github.com/apollographql/apollo-client/issues/5531
     const { loading, data, error, startPolling, stopPolling } = useQuery(GET_ALL_BUILDINGS, {
         // fetchPolicy: 'network-only',
         // nextFetchPolicy: 'cache-first',

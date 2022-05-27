@@ -8,7 +8,6 @@ export const GET_ALL_BUILDINGS = gql`{
             name
             id
             meetings {
-                title
                 date
                 startTime
                 endTime

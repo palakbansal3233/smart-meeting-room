@@ -10,19 +10,19 @@ import useAppState from '../../hooks/use-app-state';
 const Home = () => {
   const {buildings, meetingRooms, meetingsMeta, loading, error } = useAppState();
   if(loading && !buildings) return <div>Loading...</div>
-  if(error) return <div>Something Went wrong please try later...</div>
+  if(error) return <div>Something Went wrong. Try Again.</div>
   
   
   return (
     <div className="app">
+      <Buildings buildings={buildings} />
+      <MeetingRooms meetingRooms={meetingRooms} />
+      <Meetings meetingsMeta={meetingsMeta} />
       <div className="new-meeting">
           <Link to="new-meeting">
             <Button text={"Add a Meeting"}></Button>
           </Link>
       </div>
-      <Buildings buildings={buildings} />
-      <MeetingRooms meetingRooms={meetingRooms} />
-      <Meetings meetingsMeta={meetingsMeta} />
     </div>
   );
 }

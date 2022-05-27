@@ -6,7 +6,6 @@ interface IBuilding {
 
 interface IMeeting {
     id: number;
-    title?: string;
     date: string;
     startTime: string;
     endTime: string;
@@ -27,7 +26,6 @@ interface IRoomState {
     startTime: string;
     endTime: string;
     date: string;
-    title: string;
 }
 interface IMeetingMeta {
     todayMeetingCount: number;
